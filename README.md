@@ -17,7 +17,7 @@ The requirements for this assignment may be found in the file homework_instructi
 * We start with GitHub, setting up the daily-diet repository for the application, including the initial README.md file and .gitignore directory
 * Clone the repository and set up the files required for this assignment, including .gitignore. 
 * npm init to set up package.json with the ability to add packages/modules with npm init -y
-* Working within the daily-diet directory... Started the MySQL database server with the command mysql.server start Set up the MySQL database server using CLI commands via mysql -u root -p. Key files here were schema.sql and seeds.sql, which were executed from the CLI with the source command. These were used to create a database with fourteen of my favorite foods with calorie counts for those foods in the portions usually eaten.  
+* Working within the daily-diet directory... Started the MySQL database server with the command mysql.server start Set up the MySQL database server using CLI commands via mysql -u root -p. Key files here were schema.sql and seeds.sql, which were executed from the CLI with the source command. These were used to create a database foods_db with a table foods with fourteen of my favorite foods. Columns are the food name and calorie count in the portions usually eaten. You will see pretty much the full range of my daily diet... pretty bland and low-calorie stuff... but that's me.
 * Added numerous node packages with npm install --save [package-name]
 * Set up application directories :
 
@@ -43,11 +43,15 @@ npm install -g nodemon
   
 Continuing to work within the daily-diet directory, I brought the node modules into play with npm initialize
 
-Executed the application with nodemon server.js and proceeded to edit and develop the application.  
+Executed the application with nodemon server.js and proceeded to edit and develop the application. 
+
+The quotes app from class provided facilities for listing the current database items (14 food items here), entering new diet items, and deleting food items.
+
+The next challenge (had there been time to implement it) would be the actual select daily food items page to provide a calorie count for the entire day's diet. 
 
 
 ## Application Testing
-Successful creation of the foods database is shown by running select.sql within MySQL:
+Successful creation of foods table in the foods_db database is shown by running select.sql within MySQL:
 +----+-----------------------------------------------------------------------------------------------+----------+
 | id | food                                                                                          | calories |
 +----+-----------------------------------------------------------------------------------------------+----------+
@@ -67,4 +71,8 @@ Successful creation of the foods database is shown by running select.sql within 
 | 14 | Mighty Mago Juice (1 bottle)                                                                  |      290 |
 +----+-----------------------------------------------------------------------------------------------+----------+
 
-We can also execute partial testing under node.js and on the client/browser. Still much to do to get all the pieces to work together.
+We can also execute partial testing under node.js and on the client/browser. 
+
+Tried entering a new food item to test that portion of the app: Lemonzest Luna Bar at 190 calories. Ran into difficulties in having the calories and food item text mixed up when entered into the database. Need to fix this before adding additional functions to the app.
+
+Still much to do to get all the pieces to work together.

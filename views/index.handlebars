@@ -1,14 +1,14 @@
-<h1>Quotes App</h1>
+<h1>Daily Diet App</h1>
 
-<p>Manage quotes with this app</p>
+<p>Manage foods with this app</p>
 
 <!-- Pass in data from server.js -->
 <ul>
-  {{#each quotes}}
+  {{#each foods}}
   	<li>
   		<p><span class="label">ID:</span> {{this.id}}</p>
-      <p><span class="label">Quote:</span> {{this.quote}}</p>
-      <p><span class="label">Author:</span> {{this.author}}</p>
+      <p><span class="label">Food:</span> {{this.food}}</p>
+      <p><span class="label">Calories:</span> {{this.calories}}</p>
 
       <form action="/{{this.id}}?_method=DELETE" method="POST">
         <input type="hidden" name="id" value="{{this.id}}">
@@ -20,19 +20,20 @@
   {{/each}}
 </ul>
 
-<h2>Add a Quote</h2>
+<h2>Add a Food Item</h2>
 
 <form class="create-form" action="/" method="POST">
 
   <div class="form-group">
-    <label for="auth">Author:</label>
-    <input type="text" id="auth" name="author">
+    <label for="food">Food item:</label>
+      <textarea id="food" name="food" rows=8" cols="40"></textarea>
   </div>
 
   <div class="form-group">
-    <label for="quo">Quote:</label>
-    <textarea id="quo" name="quote" rows="8" cols="40"></textarea>
+    <label for="calories">Calories:</label>
+      <input type="text" id="calories" name="calories">
+
   </div>
 
-  <button type="submit">Add Quote</button>
+  <button type="submit">Add Food</button>
 </form>

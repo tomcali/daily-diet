@@ -24,7 +24,7 @@ var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "quotes_db"
+  database: "foods_db"
 });
 
 connection.connect(function(err) {
@@ -37,17 +37,17 @@ connection.connect(function(err) {
 
 // Serve index.handlebars to the root route.
 app.get("/", function(req, res) {
-  connection.query("SELECT * FROM quotes;", function(err, data) {
+  connection.query("SELECT * FROM foods;", function(err, data) {
     if (err) {
       throw err;
     }
-    res.render("index", { quotes: data });
+    res.render("index", { foods: data });
   });
 });
 
 app.post("/", function(req, res) {
-  connection.query("INSERT INTO quotes (author, quote) VALUES (?, ?)", [
-    req.body.author, req.body.quote
+  connection.query("INSERT INTO foods (food, calories) VALUES (?, ?)", [
+    req.body.calories, req.body.food
   ], function(err, result) {
     if (err) {
       throw err;
@@ -58,7 +58,7 @@ app.post("/", function(req, res) {
 });
 
 app.delete("/:id", function(req, res) {
-  connection.query("DELETE FROM quotes WHERE id = ?", [req.params.id], function(err, result) {
+  connection.query("DELETE FROM foods WHERE id = ?", [req.params.id], function(err, result) {
     if (err) {
       throw err;
     }
@@ -68,20 +68,20 @@ app.delete("/:id", function(req, res) {
 
 // Show the user the individual quote and the form to update the quote.
 app.get("/:id", function(req, res) {
-  connection.query("SELECT * FROM quotes where id = ?", [req.params.id], function(err, data) {
+  connection.query("SELECT * FROM foods where id = ?", [req.params.id], function(err, data) {
     if (err) {
       throw err;
     }
 
     console.log(data);
-    res.render("single-quote", data[0]);
+    res.render("single-food", data[0]);
   });
 });
 
 // Update a quote by an id and then redirect to the root route.
 app.put("/:id", function(req, res) {
-  connection.query("UPDATE quotes SET author = ?, quote = ? WHERE id = ?", [
-    req.body.author, req.body.quote, req.params.id
+  connection.query("UPDATE foods SET food = ?, calories = ? WHERE id = ?", [
+    req.body.food, req.body.calories, req.params.id
   ], function(err, result) {
     if (err) {
       throw err;
