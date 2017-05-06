@@ -8,6 +8,7 @@ Set up the structure of the hosted app and hosted database and began testing.
 
 ## Viewing the App
 The GitHub repository shows the work on the assignment. 
+https://github.com/tomcali/daily-diet.git
 
 ## Requirements
 The requirements for this assignment may be found in the file homework_instructions.md, which is enclosed in the repository under documentation/homework-14-Express-Handlebars. 
